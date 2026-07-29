@@ -48,21 +48,6 @@ O banco é inicializado automaticamente pelo Spring Boot.
 Console do H2 disponível em:
 http://localhost:8080/h2-console
 
-# 👨‍🏫 Assessment
-Critérios atendidos 
-✅ Arquitetura Hexagonal (Ports & Adapters) 
-✅ API REST 
-✅ Interface Web (Thymeleaf) 
-✅ Spring Boot (Spring Data JPA + Spring Web)
-✅ CRUD completo 
-✅ DTOs
-✅ Bean Validation 
-✅ Tratamento global de exceções
-✅ Banco H2 
-✅ Organização em camadas 
-✅ Boas práticas de desenvolvimento 
-✅ Documentação
-
 # 🚀 Future Features
 Autenticação com Spring Security 
 + JWT Módulo de Locadora (contrato de locação)
