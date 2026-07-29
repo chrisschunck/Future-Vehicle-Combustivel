@@ -52,4 +52,11 @@ http://localhost:8080/h2-console
 Critérios atendidos ✅ Arquitetura Hexagonal (Ports & Adapters) ✅ API REST ✅ Interface Web (Thymeleaf) ✅ Spring Boot ✅ Spring Data JPA ✅ CRUD completo ✅ DTO Request ✅ DTO Response ✅ Bean Validation ✅ Tratamento global de exceções ✅ Banco H2 ✅ Organização em camadas ✅ Herança JPA (JOINED) para tipos de veículo ✅ Boas práticas de desenvolvimento ✅ Documentação
 
 # 🚀 Future Features
-Autenticação com Spring Security + JWT Módulo de Locadora (contrato de locação) Módulo de Concessionária (pátio e test-drive) Banco PostgreSQL Docker Swagger/OpenAPI Testes Unitários Testes de Integração Telemetria via IoT/MQTT Notificações por e-mail CI/CD com GitHub Actions
+Autenticação com Spring Security 
++ JWT Módulo de Locadora (contrato de locação)
++ Módulo de Concessionária (pátio e test-drive)
++ Banco PostgreSQL
++ Docker 
++ Testes Unitários
++ Testes de Integração Telemetria via IoT/MQTT
++ Notificações por e-mail CI/CD com GitHub Actions
