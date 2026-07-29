@@ -39,8 +39,8 @@ GlobalExceptionHandler
 Permitindo respostas padronizadas para erros da API (404 para entidade não encontrada, 409 para conflitos de regra de negócio, 400 para dados inválidos).
 
 # ▶️ Execution
-mvn spring-boot:run
-Aplicação disponível em: http://localhost:8080
+deploy no railway
+Aplicação disponível em: future-vehicle-combustivel-production.up.railway.app
 
 # 🗄️ Database
 O sistema utiliza o banco H2 Database (modo arquivo) para persistência dos dados.
