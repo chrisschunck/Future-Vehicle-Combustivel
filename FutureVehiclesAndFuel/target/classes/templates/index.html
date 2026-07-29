@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Dashboard')}"></head>
+<body>
+<div th:replace="~{fragments :: nav}"></div>
+<div class="container">
+    <h2 class="mb-4">Painel da Frota</h2>
+    <div class="row g-3">
+        <div class="col-md-3">
+            <div class="card p-3 text-center">
+                <div class="fs-1 fw-bold" th:text="${totalVeiculos}">0</div>
+                <div class="text-muted">Veiculos</div>
+                <a th:href="@{/veiculos}" class="stretched-link"></a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card p-3 text-center">
+                <div class="fs-1 fw-bold" th:text="${totalMotoristas}">0</div>
+                <div class="text-muted">Motoristas</div>
+                <a th:href="@{/motoristas}" class="stretched-link"></a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card p-3 text-center">
+                <div class="fs-1 fw-bold" th:text="${totalAlocacoesAtivas}">0</div>
+                <div class="text-muted">Alocacoes ativas</div>
+                <a th:href="@{/alocacoes}" class="stretched-link"></a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card p-3 text-center">
+                <div class="fs-1 fw-bold" th:text="${totalVeiculosDisponiveis}">0</div>
+                <div class="text-muted">Disponiveis agora</div>
+                <a th:href="@{/veiculos}" class="stretched-link"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4 d-flex gap-2 flex-wrap">
+        <a th:href="@{/veiculos/novo}" class="btn btn-primary">+ Cadastrar Veiculo</a>
+        <a th:href="@{/motoristas/novo}" class="btn btn-outline-primary">+ Cadastrar Motorista</a>
+        <a th:href="@{/alocacoes/nova}" class="btn btn-outline-primary">+ Nova Alocacao</a>
+        <a th:href="@{/manutencoes/nova}" class="btn btn-outline-secondary">+ Registrar Manutencao</a>
+        <a th:href="@{/abastecimentos/novo}" class="btn btn-outline-secondary">+ Registrar Abastecimento</a>
+    </div>
+</div>
+<div th:replace="~{fragments :: scripts}"></div>
+</body>
+</html>

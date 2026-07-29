@@ -1,0 +1,11 @@
+body {
+    background-color: #f5f6f8;
+}
+.card {
+    border: none;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+.status-DISPONIVEL { color: #198754; font-weight: 600; }
+.status-EM_USO { color: #0d6efd; font-weight: 600; }
+.status-MANUTENCAO { color: #fd7e14; font-weight: 600; }
+.status-INATIVO { color: #6c757d; font-weight: 600; }

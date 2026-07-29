@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Veiculos')}"></head>
+<body>
+<div th:replace="~{fragments :: nav}"></div>
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Veiculos</h2>
+        <a th:href="@{/veiculos/novo}" class="btn btn-primary">+ Novo Veiculo</a>
+    </div>
+    <div th:replace="~{fragments :: mensagens}"></div>
+    <div class="card p-3">
+        <table class="table table-hover align-middle mb-0">
+            <thead>
+            <tr>
+                <th>Placa</th><th>Modelo</th><th>Marca</th><th>Propulsao</th>
+                <th>Km atual</th><th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="v : ${veiculos}">
+                <td th:text="${v.placa}"></td>
+                <td th:text="${v.modelo}"></td>
+                <td th:text="${v.marca}"></td>
+                <td th:text="${v.tipoPropulsao}"></td>
+                <td th:text="${v.quilometragemAtual}"></td>
+                <td><span th:text="${v.status}" th:classappend="'status-' + ${v.status}"></span></td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(veiculos)}">
+                <td colspan="6" class="text-center text-muted py-4">Nenhum veiculo cadastrado ainda.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div th:replace="~{fragments :: scripts}"></div>
+</body>
+</html>

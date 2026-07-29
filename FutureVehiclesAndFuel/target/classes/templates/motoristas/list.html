@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Motoristas')}"></head>
+<body>
+<div th:replace="~{fragments :: nav}"></div>
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Motoristas</h2>
+        <a th:href="@{/motoristas/novo}" class="btn btn-primary">+ Novo Motorista</a>
+    </div>
+    <div th:replace="~{fragments :: mensagens}"></div>
+    <div class="card p-3">
+        <table class="table table-hover align-middle mb-0">
+            <thead><tr><th>Nome</th><th>CNH</th><th>Validade CNH</th><th>Situacao</th></tr></thead>
+            <tbody>
+            <tr th:each="m : ${motoristas}">
+                <td th:text="${m.nome}"></td>
+                <td th:text="${m.cnh}"></td>
+                <td th:text="${m.validadeCnh}"></td>
+                <td>
+                    <span th:if="${m.cnhValida()}" class="badge text-bg-success">Valida</span>
+                    <span th:unless="${m.cnhValida()}" class="badge text-bg-danger">Vencida</span>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(motoristas)}">
+                <td colspan="4" class="text-center text-muted py-4">Nenhum motorista cadastrado ainda.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div th:replace="~{fragments :: scripts}"></div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Alocacoes')}"></head>
+<body>
+<div th:replace="~{fragments :: nav}"></div>
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Alocacoes</h2>
+        <a th:href="@{/alocacoes/nova}" class="btn btn-primary">+ Nova Alocacao</a>
+    </div>
+    <div th:replace="~{fragments :: mensagens}"></div>
+    <div class="card p-3">
+        <table class="table table-hover align-middle mb-0">
+            <thead><tr><th>Veiculo</th><th>Motorista</th><th>Inicio</th><th>Fim</th><th>Km inicial</th><th>Km final</th><th></th></tr></thead>
+            <tbody>
+            <tr th:each="a : ${alocacoes}">
+                <td th:text="${a.veiculoPlaca}"></td>
+                <td th:text="${a.motoristaNome}"></td>
+                <td th:text="${a.dataInicio}"></td>
+                <td th:text="${a.dataFim} ?: '-'"></td>
+                <td th:text="${a.kmInicial}"></td>
+                <td th:text="${a.kmFinal} ?: '-'"></td>
+                <td>
+                    <form th:if="${a.ativa}" th:action="@{'/alocacoes/' + ${a.id} + '/finalizar'}" method="post" class="d-flex gap-2">
+                        <input type="number" name="kmFinal" class="form-control form-control-sm" placeholder="Km final" style="width:110px" required/>
+                        <button type="submit" class="btn btn-sm btn-outline-success">Finalizar</button>
+                    </form>
+                    <span th:unless="${a.ativa}" class="badge text-bg-secondary">Finalizada</span>
+                </td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(alocacoes)}">
+                <td colspan="7" class="text-center text-muted py-4">Nenhuma alocacao registrada ainda.</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div th:replace="~{fragments :: scripts}"></div>
+</body>
+</html>

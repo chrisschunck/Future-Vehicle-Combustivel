@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Novo Veiculo')}"></head>
+<body>
+<div th:replace="~{fragments :: nav}"></div>
+<div class="container" style="max-width: 700px;">
+    <h2 class="mb-4">Cadastrar Veiculo</h2>
+    <div th:replace="~{fragments :: mensagens}"></div>
+    <form th:action="@{/veiculos}" th:object="${veiculoFormData}" method="post" class="card p-4">
+
+        <div class="mb-3">
+            <label class="form-label">Placa</label>
+            <input type="text" class="form-control" th:field="*{placa}" required maxlength="8"/>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Modelo</label>
+                <input type="text" class="form-control" th:field="*{modelo}" required/>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label">Marca</label>
+                <input type="text" class="form-control" th:field="*{marca}"/>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Quilometragem atual (km)</label>
+            <input type="number" class="form-control" th:field="*{quilometragemAtual}" min="0"/>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Tipo de propulsao</label>
+            <select class="form-select" th:field="*{tipoPropulsao}" id="tipoPropulsao" onchange="atualizarCampos()" required>
+                <option value="">Selecione...</option>
+                <option th:each="t : ${tiposPropulsao}" th:value="${t}" th:text="${t}"></option>
+            </select>
+        </div>
+
+        <div id="campos-bev" class="border rounded p-3 mb-3 d-none">
+            <h6 class="text-muted">Dados da bateria (BEV)</h6>
+            <div class="row">
+                <div class="col-md-4 mb-2">
+                    <label class="form-label">Capacidade (kWh)</label>
+                    <input type="number" step="0.1" class="form-control" th:field="*{capacidadeBateriaKwh}"/>
+                </div>
+                <div class="col-md-4 mb-2">
+                    <label class="form-label">Autonomia estimada (km)</label>
+                    <input type="number" class="form-control" th:field="*{autonomiaEstimadaKm}"/>
+                </div>
+                <div class="col-md-4 mb-2">
+                    <label class="form-label">Nivel de carga atual (%)</label>
+                    <input type="number" step="0.1" class="form-control" th:field="*{nivelCargaAtualPercentual}"/>
+                </div>
+            </div>
+        </div>
+
+        <div id="campos-fcev" class="border rounded p-3 mb-3 d-none">
+            <h6 class="text-muted">Dados do tanque de hidrogenio (FCEV)</h6>
+            <div class="row">
+                <div class="col-md-6 mb-2">
+                    <label class="form-label">Capacidade do tanque (kg)</label>
+                    <input type="number" step="0.1" class="form-control" th:field="*{capacidadeTanqueH2Kg}"/>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <label class="form-label">Pressao do tanque (bar)</label>
+                    <input type="number" step="0.1" class="form-control" th:field="*{pressaoTanqueBar}"/>
+                </div>
+            </div>
+        </div>
+
+        <div id="campos-hibrido" class="border rounded p-3 mb-3 d-none">
+            <h6 class="text-muted">Dados hibridos (tanque + bateria)</h6>
+            <div class="row">
+                <div class="col-md-6 mb-2">
+                    <label class="form-label">Capacidade do tanque (litros)</label>
+                    <input type="number" step="0.1" class="form-control" th:field="*{capacidadeTanqueLitros}"/>
+                </div>
+                <div class="col-md-6 mb-2">
+                    <label class="form-label">Capacidade da bateria (kWh)</label>
+                    <input type="number" step="0.1" class="form-control" th:field="*{capacidadeBateriaKwh}"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a th:href="@{/veiculos}" class="btn btn-outline-secondary">Cancelar</a>
+        </div>
+    </form>
+</div>
+<div th:replace="~{fragments :: scripts}"></div>
+<script>
+    function atualizarCampos() {
+        const tipo = document.getElementById('tipoPropulsao').value;
+        document.getElementById('campos-bev').classList.add('d-none');
+        document.getElementById('campos-fcev').classList.add('d-none');
+        document.getElementById('campos-hibrido').classList.add('d-none');
+        if (tipo === 'BEV') document.getElementById('campos-bev').classList.remove('d-none');
+        if (tipo === 'FCEV') document.getElementById('campos-fcev').classList.remove('d-none');
+        if (tipo === 'HIBRIDO') document.getElementById('campos-hibrido').classList.remove('d-none');
+    }
+    document.addEventListener('DOMContentLoaded', atualizarCampos);
+</script>
+</body>
+</html>
