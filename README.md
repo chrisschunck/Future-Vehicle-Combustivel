@@ -7,7 +7,16 @@ A aplicação permite:
 Cadastrar veículos com diferentes fontes de energia (BEV, FCEV, Híbrido) Cadastrar motoristas Alocar veículos a motoristas Finalizar alocações Registrar manutenções preventivas Registrar abastecimentos e recargas Consultar o status da frota em tempo real Interagir pela API REST ou pela interface web
 
 # ⚙️ Technologies
-Java 21+ Spring Boot 4.1 Spring Web (MVC) Spring Data JPA Hibernate Spring Security Bean Validation Thymeleaf Bootstrap 5 H2 Database Lombok Maven Git / GitHub
+Java 21+
+Spring Boot 4.1 
+Spring Web (MVC) 
+Spring Data JPA Hibernate 
+Spring Security 
+Bean Validation 
+Thymeleaf Bootstrap 5 
+H2 Database 
+Lombok 
+Maven 
 
 # 🧠 Business Logic
 A aplicação foi desenvolvida seguindo os princípios da Arquitetura Hexagonal, separando claramente as responsabilidades entre domínio, aplicação e infraestrutura.
