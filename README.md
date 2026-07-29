@@ -18,35 +18,6 @@ H2 Database
 Lombok 
 Maven 
 
-# 🧠 Business Logic
-A aplicação foi desenvolvida seguindo os princípios da Arquitetura Hexagonal, separando claramente as responsabilidades entre domínio, aplicação e infraestrutura.
-
-Domain
-Contém os models de negócio puros (Veiculo e suas variações BEV/FCEV/Híbrido, Motorista, Alocacao, Manutencao, Abastecimento, Empresa), sem nenhuma dependência de framework. As regras de negócio (ex: um veículo só pode ter uma alocação ativa por vez, validação de CNH vencida) vivem nessa camada.
-
-Application (Ports & Use Cases)
-Define os ports de entrada (casos de uso, ex: AlocarVeiculoUseCase) e de saída (repositórios, ex: VeiculoRepositoryPort), e implementa os Services que orquestram as regras de negócio entre eles.
-
-Adapters — Controllers (entrada)
-Responsáveis por disponibilizar os endpoints REST da aplicação (/api/veiculos, /api/motoristas, /api/alocacoes, /api/manutencoes, /api/abastecimentos) e as rotas da interface web (/veiculos, /motoristas, /alocacoes, /manutencoes, /abastecimentos), sem conter regra de negócio — apenas tradução de entrada/saída.
-
-Adapters — Repository (Persistence)
-A camada de persistência utiliza Spring Data JPA.
-Os Repository Adapters fazem a comunicação entre a aplicação e o banco de dados, convertendo os models de domínio em entidades JPA e vice-versa.
-
-DTO Request / Response
-Os DTOs Request recebem os dados enviados pelo cliente na API, evitando que as entidades sejam expostas diretamente.
-Os DTOs Response retornam apenas as informações necessárias para o cliente.
-Para a interface web, formulários usam classes de FormData dedicadas para o binding do Thymeleaf.
-
-Interface Web (Thymeleaf)
-Um dashboard e telas de cadastro/consulta foram construídos com Thymeleaf + Bootstrap, permitindo operar o sistema completo pelo navegador, sem depender apenas da API REST.
-
-Exception Handler
-O projeto possui tratamento centralizado de exceções através do:
-GlobalExceptionHandler
-Permitindo respostas padronizadas para erros da API (404 para entidade não encontrada, 409 para conflitos de regra de negócio, 400 para dados inválidos).
-
 # ▶️ Execution
 deploy no railway
 Aplicação disponível em: future-vehicle-combustivel-production.up.railway.app
