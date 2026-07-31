@@ -21,8 +21,7 @@ Maven
 
 # ▶️ Execution
 deploy no railway
-Aplicação disponível em: future-vehicle-combustivel-production.up.railway.app
-
+Aplicação disponível em: frotacontrol.up.railway.app
 # 🗄️ Database
 O sistema utiliza PostgreSQL para persistência dos dados.
 O banco é inicializado automaticamente pelo Spring Boot.
