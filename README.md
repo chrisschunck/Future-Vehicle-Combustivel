@@ -14,7 +14,8 @@ Spring Data JPA Hibernate
 Spring Security 
 Bean Validation 
 Thymeleaf Bootstrap 5 
-H2 Database 
+PostgreSQL
+Docker / Docker Compose
 Lombok 
 Maven 
 
@@ -23,17 +24,13 @@ deploy no railway
 Aplicação disponível em: future-vehicle-combustivel-production.up.railway.app
 
 # 🗄️ Database
-O sistema utiliza o banco H2 Database (modo arquivo) para persistência dos dados.
+O sistema utiliza PostgreSQL para persistência dos dados.
 O banco é inicializado automaticamente pelo Spring Boot.
-Console do H2 disponível em:
-http://localhost:8080/h2-console
 
 # 🚀 Future Features
 Autenticação com Spring Security 
 + JWT Módulo de Locadora (contrato de locação)
 + Módulo de Concessionária (pátio e test-drive)
-+ Banco PostgreSQL
-+ Docker 
 + Testes Unitários
 + Testes de Integração Telemetria via IoT/MQTT
 + Notificações por e-mail CI/CD com GitHub Actions
